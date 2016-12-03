@@ -1,11 +1,18 @@
 {
-  "name": "datesapp",
-  "version": "1.0.0",
+  "name": "workdays",
+  "version": "1.0.1-c",
   "description": "application to calculate days difference between two dates",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "workdays": "./main.js"
   },
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "start": "node ./main.js",
+    "test": "mocha  --reporter spec"
+  },
+  "author": "Nirmal Deol",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }

@@ -24,7 +24,6 @@ self.validDate = function(date) {
     return false;
 }
 
-
 checkYear = function(year) {
 
     return year <= 2999 && year >= 1901 ? true : false
@@ -36,7 +35,6 @@ checkMonth = function(month) {
 
 }
 
-
 checkDay = function(obj) {
     var valid;
     var day = obj.day;
@@ -47,6 +45,5 @@ checkDay = function(obj) {
         return false;
     }
 }
-
 
 module.exports = self;

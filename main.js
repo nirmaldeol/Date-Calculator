@@ -1,13 +1,16 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
+
 'use strict'
 var valid = require('./validator');
 var helper = require('./helper');
-var calc = require('./calculator')
+var calc = require('./calculator');
+process.stdout.write("************************************************************************************" + "\n");
+process.stdout.write("This Application will accept two dates and return difference of days between them" + "\n");
+process.stdout.write("************************************************************************************" + "\n")
+process.stdout.write("Please enter all dates in dd/mm/yyyy Format " + "\n");
+ask("Please enter Start Date for Project", valid.validDate, function(startDate) {  
+    ask("Please enter an End Date for Project", valid.validDate, function(endDate) {    
 
-
-
-ask("Please enter date in dd/mm/yyy format", valid.validDate, function(startDate) {  
-    ask("Please enter EndDate in dd/mm/yyy format", valid.validDate, function(endDate) {    
         var startObj = helper.dateSplitter(startDate);
         var endObj = helper.dateSplitter(endDate);
         var dateswap = valid.verifyDates(startObj, endObj);
@@ -17,7 +20,8 @@ ask("Please enter date in dd/mm/yyy format", valid.validDate, function(startDate
             var calculated_days = calc.calculator(endObj, startObj);
         }
         process.stdout.write("Days of experiment Between given dates: " + calculated_days);
-        process.exit();  
+        process.exit();
+
     });
 });
 
@@ -35,8 +39,8 @@ function ask(question, valid, callback) {
         if (valid(data)) {
             callback(data);
         } else {
-            stdout.write("It should match: dd/mm/yyyy " + "\n");
-            ask(question, validator, callback);
+            stdout.write("Dates should use all numebers in dd/mm/yyyy format " + "\n");
+            ask(question, valid, callback);
         }
     });
 }
