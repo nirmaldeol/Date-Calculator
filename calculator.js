@@ -19,13 +19,15 @@ function complete_year_Days(start, end) {
     var yearsDiff = end.year - start.year;
     if (yearsDiff > 1) {
         years_array = helper.getArray(start.year, end.year)
-        leap_year_array = years_array.filter(function(i) { return i % 4 === 0 });
+        leap_year_array = years_array.filter(function(i) { return helper.leap_year(i); });
         years_Days = (years_array.length * 365) + leap_year_array.length;
+        console.log(leap_year_array)
     } else {
         years_Days = 0;
     }
     return years_Days;
 };
+
 
 
 function complete_months_days(start, end) {

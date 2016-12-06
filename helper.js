@@ -16,9 +16,9 @@ self.getDaysInMonth = function(month, year) {
 
     if ([11, 9, 6, 4].indexOf(month) > -1) {
         daysInMonth = 30;
-    } else if (month == 2 && year % 4 == 0) {
+    } else if (month == 2 && self.leap_year(year)) {
         daysInMonth = 29;
-    } else if (month == 2 && year % 4 != 0) {
+    } else if (month == 2 && !self.leap_year(year)) {
         daysInMonth = 28;
     } else if (month != 0) {
         daysInMonth = 31;
@@ -40,6 +40,17 @@ self.getArray = function(x, y) {
         any_array.push(i);
     }
     return any_array;
+}
+
+self.leap_year = function(i) {
+    var valid = false;
+    if (i % 100 !== 0 && i % 4 === 0) {
+        valid = true;
+    } else if (i % 100 === 0 && i % 400 === 0) {
+        valid = true;
+    }
+
+    return valid;
 }
 
 module.exports = self;
